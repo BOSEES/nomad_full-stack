@@ -4,8 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": " nodemon babel-node init.js --delay 2"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BOSEES/nomad_full-stack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BOSEES/nomad_full-stack/issues"
+  },
+  "homepage": "https://github.com/BOSEES/nomad_full-stack#readme",
+  "dependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.15",
+    "cookie-parser": "^1.4.5",
+    "core-js": "3",
+    "express": "^4.17.1",
+    "helmet": "^4.5.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
