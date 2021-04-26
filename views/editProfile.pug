@@ -1,0 +1,11 @@
+extends layout/main.pug
+
+block content
+    div.form__container
+        form(action=routes.editProfile, method="post")
+            label(for="avartar") Avatar
+            input(type="file", id="Avatar", name="avatar")
+            input(type="text", placeholder="Name", name="name")
+            input(type="email", placeholder="Email", name="email")
+            input(type="submit", value="Update profile")
+        a.form__container-link(href=`/users${routes.changePassword}`) Change Password
