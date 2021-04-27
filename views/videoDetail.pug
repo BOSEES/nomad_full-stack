@@ -1,4 +1,15 @@
 extends layout/main.pug
 
 block content
-    p Video Detail
+    div.video__player
+        video(src=`/${video.fileUrl}`)
+    div.video__info
+        a(href=routes.editVideo(video.id)) Edit Video
+        h5.video__title=video.title
+        span.video__views=video.views
+        p.video__description=video.description
+    div.video__comments
+        if video.comments.length === 1
+            span.video__commnents-number 1 comment
+        else
+            span.video__commnents-number #{video.comments.length} comments
