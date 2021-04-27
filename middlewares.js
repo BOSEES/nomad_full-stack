@@ -1,4 +1,8 @@
 const routes = require("./routes");
+const multer = require("multer");
+const uploadVideo = multer({ dest: "uploads/videos/" }); //파일이 저장될 위치
+
+const uploadVideoMiddleware = uploadVideo.single("videoFile")
 
 const localMiddlewear = (req, res, next) => {
   res.locals.siteName = "WeTube";
@@ -10,4 +14,4 @@ const localMiddlewear = (req, res, next) => {
   next();
 }
 
-module.exports = localMiddlewear;
+module.exports = {localMiddlewear, uploadVideoMiddleware};

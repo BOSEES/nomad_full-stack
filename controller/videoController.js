@@ -1,18 +1,35 @@
-const videos = require("../db");
 const routes = require("../routes");
+const Video = require("../models/Video");
 
-const home = (req, res) => res.render("home", {title: "Home", videos})
+const home = async (req, res) => {
+  try{
+    const videos = await Video.find({});
+    res.render("home", {title: "Home", videos})
+  } catch (error){
+    console.log(error);
+    res.render("home", {title: "Home", videos: []})
+  }
+
+  
+}
 const search = (req, res) => {
   const {query : { term :searchingBy }} = req;
   res.render("search", {title: "Search", searchingBy: searchingBy, videos})
 }
 const getUpload = (req, res) => res.render("upload", {title: "upload"})
-const postUpload = (req, res) => {
+const postUpload = async (req, res) => {
   const {
-    body :{file, title, description}
+    body: {title, description}, 
+    file: { path }
   } = req;
+  const newVideo = await Video.create({
+    fileUrl: path,
+    title:title,
+    description: description
+  })
   //to DO : upload and save video
-  res.redirect(routes.videoDetail(123123));
+  console.log(newVideo);
+  res.redirect(routes.videoDetail(newVideo.id));
 }
 const videoDetail = (req, res) => res.render("videoDetail", {title: "Video Detail"})
 const editVideo = (req, res) => res.render("editVideo", {title: "Edit Video"})

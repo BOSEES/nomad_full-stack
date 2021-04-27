@@ -7,11 +7,12 @@ const userRouter =require("./routes/userRouter.js");
 const videoRouter =require("./routes/videoRouter.js");
 const globalRouter = require("./routes/globalRouter.js")
 const routes = require("./routes");
-const localMiddlewear = require("./middlewares.js");
+const {localMiddlewear} = require("./middlewares.js");
 const app = express();
 
 app.set("view engine", "pug");
 app.use(helmet({contentSecurityPolicy:false}));
+app.use("/uploads", express.static("uploads"));
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
