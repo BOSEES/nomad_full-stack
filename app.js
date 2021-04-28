@@ -12,6 +12,7 @@ const app = express();
 
 app.set("view engine", "pug");
 app.use(helmet({contentSecurityPolicy:false}));
+app.use("/static", express.static("static"))
 app.use("/uploads", express.static("uploads"));
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({extended: true}));
